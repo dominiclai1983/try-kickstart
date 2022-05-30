@@ -38,6 +38,10 @@ contract Campaign {
         _;
     }
 
+    function getRequestsCount() public view returns(uint){
+        return requests.length;
+    }
+
     //constructor function of Campaign contract, the required data to create contract
     function Campaign(uint minimum, address creator) public {
         manager = creator;
@@ -83,5 +87,15 @@ contract Campaign {
 
         request.recipient.transfer(request.value);
         request.complete = true;
+    }
+
+    function getSummary() public view returns (uint, uint, uint, uint, address){
+        return (
+            minimumContribution,
+            this.balance,
+            requests.length,
+            approversCount,
+            manager
+        );
     }
 }
