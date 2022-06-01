@@ -31,7 +31,7 @@ contract Campaign {
     address public manager;
     uint public minimumContribution;
     mapping(address => bool) public approvers;
-    uint public approversCount;
+    uint public approversCount;//total number of the people donate the campaign
 
     modifier restricted() {
         require(msg.sender == manager);
